@@ -3,20 +3,32 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+.screen{
+    width: 100vw;
+    height: 100vh;
+    background: url(/Mario-Run/img/cenario/cenario-temporariio.avif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative;
+}
 .container {
-    background-color: gray;
     width: 100%;
-    height: 100%;
-    border: solid 2px;
-    position: absolute;
+    height: 540px;
+
+    position: relative;
 }
 
 .player {
     position: absolute;
-    bottom: 0;
     width: 50px;
     height: 50px;
+    left: 0;
+    top: 0;
+    animation: pular 2s infinite;
 }
+
+
 
 

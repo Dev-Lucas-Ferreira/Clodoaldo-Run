@@ -1,49 +1,69 @@
 //variaveis do jogador
 const player = document.getElementById('character');
-let player_speed = 10;
+let player_speed = 100;
 
 //eixos
 let positionX = 0;
 let positionY = 0;
-const container = document.getElementsByClassName('container');
 
-function area_limite(newX, newY) {
-    const containerWidth = container.offsetWidth;
-    const containerHeight = container.offseHeight;
-    const playerWidth = player.offsetWidth;
-    const playerHeight = player.offHeight;
-
-    if (newX < 0 || newX > containerWidth - playerWidth || newY < 0 || newY > containerheight - playerHeight) {
-        return false;
-    } return true;
-}
-
-//Finalmete essa disgraça de botão funcionou 
+//Função de movimento w,a,s,d FUNCIONANDO!!
 document.addEventListener('keydown', function (event) {
     const key = event.key;
-    let newX = positionX;
-    let newY = positionY;
+    const img = document.getElementById('character')
 
-    //as funções de cada tecla de movimento w,a,s,d.
     if (key === 'w' || key === 'W') {
-        newY -= player_speed;
+        positionY -= player_speed;
     } else if (key === 'a' || key === 'A') {
-        newX -= player_speed;
+        positionX -= player_speed;
+        
     } else if (key === 's' || key === 'S') {
-        newY += player_speed;
+        positionY += player_speed;
     } else if (key === 'd' || key === 'D') {
-        newX += player_speed;
+        positionX += player_speed;
+      
     }
+    parede();
 
-    if (area_limite(newX, newY)) {
-        positionX = newX;
-        positionY = newY;
-    }
 
-    player.style.transform = `translate(${positionX}px, ${positionY}px)`;
+    //fiz o chat fazer essa para pegar as cordenadas "alterar depois pois pode bugar"
+    const rect = player.getBoundingClientRect();
+    console.log(`Posição X: ${rect.x}, Posição Y: ${rect.y}`);
 })
 
+//demorei mas consegui fazer a maior parte sozinho ultilizei o chat para me explicar as funções e me dizer os erros 
+//re-fiz essa merda mais de 23 vezes HAAAAAAAAAAAAAAAAAAAAAA :)
+function parede(){
+    //altura e largura do player e do container
+    const container = document.querySelector('.container');
+    const playerX = player.offsetWidth;
+    const playerY = player.offsetHeight;
+    const maxX = container.clientWidth - playerX;
+    const maxY = container.clientHeight - playerY;
 
-//dia 12/04 eu to mechendo nessa disgraça desde o momento em que acorder nesse momento tem que corrigir esse codigo
-//tentar arrumar a area limite e fazer as animações de  pulo e corrida junto com os sprites
-//ultilize a ia apenas para me auxiliar na logica e no aprendizado 
+    if(positionX < 0){
+        positionX = 0;
+    }else if(positionX > maxX){
+        positionX = maxX;
+    }
+
+    if(positionY < 0){
+        positionY = 0;
+    }else if(positionY > maxY){
+        positionY = maxY;
+    }
+
+    player.style.left = `${positionX}px`;
+    player.style.top = `${positionY}px`; 
+}
+
+function spawn_do_personagem(){
+    const spawX = window.innerWidth;
+    const spawY = window.innerHeight;
+
+    positionX = (spawX - player.offsetWidth)/2;
+    positionY = (spawY - player.offsetHeight)/1.2;
+
+    player.style.left = `${positionX}px`;
+    player.style.top = `${positionY}px`; 
+}
+window.onload = spawn_do_personagem;
