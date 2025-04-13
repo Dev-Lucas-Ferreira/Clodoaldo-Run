@@ -8,20 +8,35 @@ let positionY = 0;
 
 //Função de movimento w,a,s,d FUNCIONANDO!!
 document.addEventListener('keydown', function (event) {
+    let sprites = "";
     const key = event.key;
+    let cenarios = "";
     const img = document.getElementById('character')
 
     if (key === 'w' || key === 'W') {
-        positionY -= player_speed;
+        positionY -= player_speed;  
     } else if (key === 'a' || key === 'A') {
         positionX -= player_speed;
-        
+
     } else if (key === 's' || key === 'S') {
         positionY += player_speed;
     } else if (key === 'd' || key === 'D') {
         positionX += player_speed;
-      
     }
+    //Cenarios
+    if (key === '1') {
+        cenarios = "url(/Mario-Run/img/cenario/cenario-temporariio.avif)"
+    } else if (key === '2') {
+        cenarios = "url(/Mario-Run/img/cenario/cenario2.png)"
+    }
+    if (cenarios) {
+        document.body.style.background = cenarios;
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center";
+    }
+
+
     parede();
 
 
@@ -32,7 +47,7 @@ document.addEventListener('keydown', function (event) {
 
 //demorei mas consegui fazer a maior parte sozinho ultilizei o chat para me explicar as funções e me dizer os erros 
 //re-fiz essa merda mais de 23 vezes HAAAAAAAAAAAAAAAAAAAAAA :)
-function parede(){
+function parede() {
     //altura e largura do player e do container
     const container = document.querySelector('.container');
     const playerX = player.offsetWidth;
@@ -40,30 +55,30 @@ function parede(){
     const maxX = container.clientWidth - playerX;
     const maxY = container.clientHeight - playerY;
 
-    if(positionX < 0){
+    if (positionX < 0) {
         positionX = 0;
-    }else if(positionX > maxX){
+    } else if (positionX > maxX) {
         positionX = maxX;
     }
 
-    if(positionY < 0){
+    if (positionY < 0) {
         positionY = 0;
-    }else if(positionY > maxY){
+    } else if (positionY > maxY) {
         positionY = maxY;
     }
 
     player.style.left = `${positionX}px`;
-    player.style.top = `${positionY}px`; 
+    player.style.top = `${positionY}px`;
 }
 
-function spawn_do_personagem(){
+function spawn_do_personagem() {
     const spawX = window.innerWidth;
     const spawY = window.innerHeight;
 
-    positionX = (spawX - player.offsetWidth)/2;
-    positionY = (spawY - player.offsetHeight)/1.2;
+    positionX = (spawX - player.offsetWidth) / 2;
+    positionY = (spawY - player.offsetHeight) / 1.2;
 
     player.style.left = `${positionX}px`;
-    player.style.top = `${positionY}px`; 
+    player.style.top = `${positionY}px`;
 }
 window.onload = spawn_do_personagem;
