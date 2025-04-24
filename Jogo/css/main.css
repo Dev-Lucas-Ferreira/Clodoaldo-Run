@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(103, 103, 223);
+  overflow-x: scroll; /* permite rolar o mundo */
+}
+
+.container {
+  width: 5000px;
+  height: 625px;
+  border: 1px solid black;
+  position: relative;
+}
+
+#world {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.player {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ground {
+  width: 100%;
+  height: 100px;
+  background-color: green;
+  position: absolute;
+  bottom: 0;
+}
+.pipe{
+  width: 100px;
+  height: 120px;
+  position: absolute;
+  bottom: 100px;
+  left: 1500px;
+}

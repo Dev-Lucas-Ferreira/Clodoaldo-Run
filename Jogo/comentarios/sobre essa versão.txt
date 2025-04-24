@@ -1,0 +1,12 @@
+23/04/2025 – Das 3:40 até 1:25 do dia 24/04/2025
+A primeira versão do jogo estava legal, porém tudo estava muito junto e desorganizado. Por isso, decidi refazer de forma mais organizada.
+
+Tudo deu quase certo, tirando o JavaScript, que apresentou 13 erros. Passei 2 horas tentando corrigir até perder a paciência.
+Consegui corrigir 6 erros, mas sobraram 7 que eu não consegui identificar. Então pedi ajuda ao ChatGPT, que corrigiu os erros restantes.
+
+Dos 7 erros restantes, 5 foram causados por eu ter esquecido de usar this, e os outros 2 foram por ter chamado variáveis antigas dentro da função collision.
+Por exemplo, eu usei player, que era a variável antiga, e esqueci de mudar para this.element.
+
+vou continuar até as 3h da manha tentando fazer a animação 
+
+e pra fazer os obstaculos e o menu 
