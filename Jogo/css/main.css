@@ -6,12 +6,14 @@
 
 body {
   background-color: rgb(103, 103, 223);
-  overflow-x: scroll; /* permite rolar o mundo */
+  overflow-x: scroll;   /* permite scroll pro lado */
+  overflow-y: hidden;   /* bloqueia scroll vertical */
 }
+
 
 .container {
   width: 5000px;
-  height: 625px;
+  height: 635px;
   border: 1px solid black;
   position: relative;
 }
@@ -43,4 +45,9 @@ body {
   position: absolute;
   bottom: 100px;
   left: 1500px;
+}
+#gamecanvas{
+  position: absolute;
+  width: 5000px;
+  height: 650px;
 }
